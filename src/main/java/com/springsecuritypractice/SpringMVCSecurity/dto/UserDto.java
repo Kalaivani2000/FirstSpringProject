@@ -3,27 +3,17 @@ package com.springsecuritypractice.SpringMVCSecurity.dto;
 import com.springsecuritypractice.SpringMVCSecurity.model.User;
 
 public class UserDto {
-    private String fullName;
-
     private String email;
-
     private String password;
-
     private String role;
+    private String fullname;
 
-    public UserDto(String fullName, String email, String password, String role) {
-        this.fullName = fullName;
+    public UserDto(String email, String password, String role, String fullname) {
+        super();
         this.email = email;
         this.password = password;
         this.role = role;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+        this.fullname = fullname;
     }
 
     public String getEmail() {
@@ -49,5 +39,14 @@ public class UserDto {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
 
 }

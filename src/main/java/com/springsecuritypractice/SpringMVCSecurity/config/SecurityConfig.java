@@ -1,4 +1,4 @@
-package config;
+package com.springsecuritypractice.SpringMVCSecurity.config;
 
 import com.springsecuritypractice.SpringMVCSecurity.service.CustomSuccessHandler;
 import com.springsecuritypractice.SpringMVCSecurity.service.CustomUserDetailService;
