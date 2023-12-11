@@ -1,17 +1,8 @@
-package com.springsecuritypractice.SpringMVCSecurity.model;
+package com.springsecuritypractice.SpringMVCSecurity.dto;
 
-import jakarta.persistence.*;
-import lombok.Data;
+import com.springsecuritypractice.SpringMVCSecurity.model.User;
 
-
-@Entity
-@Data
-@Table(name="Users",uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class UserDto {
     private String fullName;
 
     private String email;
@@ -20,8 +11,7 @@ public class User {
 
     private String role;
 
-    public User(String fullName, String email, String password, String role) {
-        this.id = id;
+    public UserDto(String fullName, String email, String password, String role) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
@@ -59,4 +49,5 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
 }

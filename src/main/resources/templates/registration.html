@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <title>Registration Form</title>
-    <link rel="stylesheet" th:href="@{../css/style.css}">
+    <link rel="stylesheet" th:href="@{../css/styles.css}">
     <meta charset="UTF-8">
+    <meta name="user" content="user-information">
     <style media="screen">
         *,
 *:before,
@@ -134,26 +135,34 @@ margin-right: 4px;
     <div class="shape"></div>
     <div class="shape"></div>
 </div>
-<form th:action=@{/registrationForm}"
-        method="post"
-        role="form"
-        th:object="${user}"
->
-    <h3>Register Here</h3>
+<div class="container">
+    <div class="message" th:if="${message != null}">
+    [[${message}]]
+    </div>
 
-    <label for="firstname">First Name</label>
-    <input  type="text" placeholder="First Name" id="firstname" required>
+    <form
+            th:action="@{/registration}"
+            method="post"
+            role="form"
+            th:object="${user}"
+    >
+        <div class="form-group">
+            <label for="fullname">Fullname:</label>
+            <input th:field="*{fullname}" type="text" id="fullname" name="fullname" placeholder="Enter your fullname" required>
+        </div>
 
-    <label for="lastname">Last Name</label>
-    <input type="text" placeholder="Last Name" id="lastname" required>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input th:field="*{email}" type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
 
-    <label for="email">Email</label>
-    <input type="email" placeholder="Email" id="email" required>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" value="Register">Submit</button>
+    </form>
 
-    <label for="password">Password</label>
-    <input  type="password" placeholder="Password" id="password" required>
-
-    <button>Submit</button>
-</form>
+</div>
 </body>
 </html>
