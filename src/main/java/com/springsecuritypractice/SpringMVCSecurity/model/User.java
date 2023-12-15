@@ -21,7 +21,6 @@ public class User {
     private String role;
 
     public User(String fullName, String email, String password, String role) {
-        this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;

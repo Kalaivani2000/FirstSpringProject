@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.authentication.AuthenticationManagerBeanDefinitionParser;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 
 @Configuration
 @EnableWebSecurity
@@ -36,9 +36,11 @@ public class SecurityConfig {
         http.csrf(c->c.disable())
                 .authorizeHttpRequests(request->request.requestMatchers("/admin-page")
                         .hasAuthority("ADMIN").requestMatchers("/user-page")
-                        .hasAuthority("USER").requestMatchers("/registration","/css/**")
+                        .hasAuthority("USER").requestMatchers("/registration","/css/**","/home")
                         .permitAll().anyRequest().authenticated())
+
                 .formLogin(form-> form.loginPage("/login").loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/home")
                         .successHandler(customSuccessHandler).permitAll())
 
                 .logout(form->form.invalidateHttpSession(true).clearAuthentication(true)
